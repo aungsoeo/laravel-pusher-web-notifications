@@ -71,8 +71,9 @@
       // Enable pusher logging - don't include this in production
       // Pusher.logToConsole = true;
 
-      var pusher = new Pusher('PUSHER_API_KEY', {
-        encrypted: true
+      var pusher = new Pusher('edcea9c6a482d16b5082', {
+         cluster: 'ap1',
+         forceTLS: true
       });
 
       // Subscribe to the channel we specified in our Laravel Event
@@ -80,6 +81,7 @@
 
       // Bind a function to a Event (the full Laravel class)
       channel.bind('App\\Events\\StatusLiked', function(data) {
+
         var existingNotifications = notifications.html();
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
         var newNotificationHtml = `
